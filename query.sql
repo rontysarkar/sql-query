@@ -27,3 +27,18 @@ CREATE TABLE Users (
     -- Write your check constraint to restrict 'role' to specific allowed strings
 );
 
+-- =========================================================================
+-- 2. CREATE MATCHES TABLE
+-- =========================================================================
+create type match_status as enum('Postponed','Sold Out','Selling Fast','Available');
+CREATE TABLE Matches (
+    match_id serial primary key,
+    fixture text,
+    tournament_category varchar(100),
+    base_ticket_price decimal(10,2) check  (base_ticket_price >= 0),
+    match_status match_status
+    
+    -- Write your constraint to make 'match_id' the Primary Key
+    -- Write your check constraint to prevent negative ticket prices
+    -- Write your check constraint to restrict 'match_status' values
+);
